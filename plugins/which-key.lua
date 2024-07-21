@@ -32,6 +32,8 @@ return {
       { "<leader>r_", hidden = true },
       { "<leader>s", group = "[S]earch", icon = { icon = "", color = "yellow" } },
       { "<leader>s_", hidden = true },
+      { "<leader>t", group = "[T]elescope", icon = { icon = "", color = "yellow" } },
+      { "<leader>t_", hidden = true },
     })
   end,
 }
