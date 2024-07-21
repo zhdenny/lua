@@ -69,6 +69,8 @@ return {
 			})
 			-- vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 			vim.keymap.set("n", "<C-p>", "<Cmd>Telescope find_files<CR>", {})
+			vim.keymap.set("n", "<leader>to", "<Cmd>cd /opt/ | Telescope find_files<CR>", { desc = '[T]elescope opt' })
+			vim.keymap.set("n", "<leader>th", "<Cmd>cd /home/beast/ | Telescope find_files<CR>", { desc = '[T]elescope home' })
       vim.keymap.set("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find<CR>", { desc = '[S]earch [B]uffer' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
