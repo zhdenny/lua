@@ -143,6 +143,7 @@ cmp.setup({
 		{ name = "path", max_item_count = 10 },
 	},
 })
+
 -- The nvim-cmp almost supports LSP's capabilities so you should advertise it to LSP servers..
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
