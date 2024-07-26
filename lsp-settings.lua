@@ -57,13 +57,13 @@ conform.setup({
 	log_level = vim.log.levels.ERROR,
 	notify_on_error = true,
 })
--- conform.nvim format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ async = true, lsp_fallback = true, bufnr = args.buf })
-	end,
-})
+-- -- conform.nvim format on save
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	pattern = "*",
+-- 	callback = function(args)
+-- 		require("conform").format({ async = true, lsp_fallback = true, bufnr = args.buf })
+-- 	end,
+-- })
 -- nvim-lint
 require("lint").linters_by_ft = {
 	go = { "golangcilint" },
