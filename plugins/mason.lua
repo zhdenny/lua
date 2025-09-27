@@ -17,22 +17,11 @@ return {
 					"jsonls",
 					"pyright",
 					"yamlls",
-					-- "gofmt",
-					-- "ruff_format",
-					-- "black",
-					-- "stylua",
-					-- "shfmt",
-					-- "golangcilint",
-					-- "tidy",
-					-- "eslint_d",
-					-- "jsonlint",
-					-- "luacheck",
-					-- "markdownlint",
 					"ruff",
-					-- "shellcheck",
-					-- "yamllint",
 				},
 			})
+			-- No additional setup_handlers needed - mason-lspconfig v2.0+
+			-- automatically enables installed servers using vim.lsp.enable()
 		end,
 	},
 }

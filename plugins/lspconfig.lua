@@ -7,38 +7,29 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local lspconfig = require("lspconfig")
-			-- this 2-line lspconfig.util section was something reddit guy said would help speed up lsp. No idea if it worked
-			lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
-				on_attach = function(client)
-					client.server_capabilities.semanticTokensProvider = nil
-				end,
-			})
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.dockerls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.docker_compose_language_service.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.jsonls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.yamlls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.matlab_ls.setup({
-				capabilities = capabilities,
-			})
+			-- Configure LSP servers using the new vim.lsp.config interface
+			local servers = {
+				"lua_ls",
+				"bashls",
+				"dockerls",
+				"docker_compose_language_service",
+				"jsonls",
+				"pyright",
+				"yamlls",
+				"matlab_ls",
+			}
 
+			-- Set up each server with the new API
+			for _, server in ipairs(servers) do
+				vim.lsp.config[server] = {
+					capabilities = capabilities,
+				}
+			end
+
+			-- Enable all configured servers
+			vim.lsp.enable(servers)
+
+			-- LspAttach autocmd replaces the old on_attach function
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
