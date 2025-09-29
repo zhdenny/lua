@@ -5,8 +5,12 @@ return {
     vim.o.timeout = true
     vim.o.timeoutlen = 50
   end,
-  config = function()
+  opts = {
+    preset = "helix", -- Changed from default "classic" to "helix"
+  },
+  config = function(_, opts)
     local wk = require("which-key")
+    wk.setup(opts)
     wk.add({
       -- ["<leader>f"] = { name = "+file" },
       -- ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
