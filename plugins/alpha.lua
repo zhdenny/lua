@@ -34,14 +34,14 @@ return {
       -- dashboard.button("SPC j", "󰈚   Restore Session", ":SessionRestore<cr>"),
       -- dashboard.button("e", "   New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("h", "   HOME - Telescope", ":cd $HOME | Telescope find_files<CR>"),
-      dashboard.button("o", "   UNRAID_SCRIPTS - Telescope", ":cd /Volumes/unraid_scripts | Telescope find_files<CR>"),
-      dashboard.button("o", "   APPDATA - Telescope", ":cd /Volumes/appdata/ | Telescope find_files<CR>"),
+      dashboard.button("u", "   UNRAID_SCRIPTS - Telescope", ":cd /Volumes/unraid_scripts | Telescope find_files<CR>"),
+      dashboard.button("a", "   APPDATA - Telescope", ":cd /Volumes/appdata/ | Telescope find_files<CR>"),
       dashboard.button("g", "󰱼   GREP DIR", ":Telescope live_grep<CR>"),
       dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
       -- dashboard.button("c", "   Config", ":e $MYVIMRC <CR>"),
       dashboard.button("m", "󱌣   Mason", ":Mason<CR>"),
       dashboard.button("l", "󰒲   Lazy", ":Lazy<CR>"),
-      dashboard.button("u", "󰂖   Update plugins", "<cmd>lua require('lazy').sync()<CR>"),
+      dashboard.button("U", "󰂖   Update plugins", "<cmd>lua require('lazy').sync()<CR>"),
       dashboard.button("q", "   Quit NVIM", ":qa<CR>"),
     }
 
