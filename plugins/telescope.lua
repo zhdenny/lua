@@ -72,6 +72,12 @@ return {
 			vim.keymap.set("n", "<leader>to", "<Cmd>cd /opt/ | Telescope find_files<CR>", { desc = "[T]elescope opt" })
 			vim.keymap.set(
 				"n",
+				"<leader>tc",
+				"<Cmd>cd /opt/custom_scripts/ | Telescope find_files<CR>",
+				{ desc = "[T]elescope opt" }
+			)
+			vim.keymap.set(
+				"n",
 				"<leader>th",
 				"<Cmd>cd /home/beast/ | Telescope find_files<CR>",
 				{ desc = "[T]elescope home" }
