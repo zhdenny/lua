@@ -33,14 +33,16 @@ return {
 		dashboard.section.buttons.val = {
 			-- dashboard.button("SPC j", "󰈚   Restore Session", ":SessionRestore<cr>"),
 			-- dashboard.button("e", "   New file", ":ene <BAR> startinsert <CR>"),
-			dashboard.button("o", "   OPT file - Telescope", ":cd /opt/ | Telescope find_files<CR>"),
-			dashboard.button("h", "   HOME file - Telescope", ":cd $HOME | Telescope find_files<CR>"),
+			dashboard.button("d", "   docker compose dir - Telescope", ":cd /boot/config/plugins/compose.manager/projects/ | Telescope live_grep<CR>"),
+			dashboard.button("u", "   userscripts dir - Telescope", ":cd /boot/config/plugins/user.scripts/scripts/ | Telescope find_files find_command=rg,--files,-g,!name,-g,!description,-g,!typescript,-g,!Community<CR>"),
+			dashboard.button("a", "   appdata dir - Telescope", ":cd /mnt/user/appdata/ | Telescope find_files<CR>"),
+			dashboard.button("h", "   home dir - Telescope", ":cd /root/ | Telescope find_files<CR>"),
 			dashboard.button("g", "󰱼   GREP DIR", ":Telescope live_grep<CR>"),
 			dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
 			-- dashboard.button("c", "   Config", ":e $MYVIMRC <CR>"),
 			dashboard.button("m", "󱌣   Mason", ":Mason<CR>"),
 			dashboard.button("l", "󰒲   Lazy", ":Lazy<CR>"),
-			dashboard.button("u", "󰂖   Update plugins", "<cmd>lua require('lazy').sync()<CR>"),
+			dashboard.button("U", "󰂖   Update plugins", "<cmd>lua require('lazy').sync()<CR>"),
 			dashboard.button("q", "   Quit NVIM", ":qa<CR>"),
 		}
 
