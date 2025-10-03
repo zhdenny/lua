@@ -91,20 +91,17 @@ return {
         "n",
         "<leader>th",
         "<Cmd>cd /Users/zach/ | Telescope find_files<CR>",
-        { desc = "[T]elescope home" }
-      )
+        { desc = "[T]elescope home" })
       vim.keymap.set(
         "n",
         "<leader>sb",
         ":Telescope current_buffer_fuzzy_find<CR>",
-        { desc = "[S]earch [B]uffer" }
-      )
+        { desc = "[S]earch [B]uffer" })
       vim.keymap.set(
         "n",
         "<leader>sG",
         "<Cmd>:lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>",
-        { desc = "[S]earch current file" }
-      )
+        { desc = "[S]earch current file" })
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
       vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
