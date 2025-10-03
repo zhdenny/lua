@@ -69,11 +69,31 @@ return {
 			})
 			-- vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 			vim.keymap.set("n", "<C-p>", "<Cmd>Telescope find_files<CR>", {})
-			vim.keymap.set("n", "<leader>ta", "<Cmd>cd /mnt/user/appdata/ | Telescope find_files<CR>", { desc = '[T]elescope appdata' })
-			vim.keymap.set("n", "<leader>td", "<Cmd>cd /boot/config/plugins/compose.manager/projects/ | Telescope find_files<CR>", { desc = '[T]elescope docker compose' })
-			vim.keymap.set("n", "<leader>tu", "<Cmd>cd /boot/config/plugins/user.scripts/scripts/ | Telescope find_files find_command=rg,--files,-g,!name,-g,!description,-g,!typescript,-g,!Community<CR>", { desc = '[T]elescope Userscripts' })
-			vim.keymap.set("n", "<leader>th", "<Cmd>cd /root/ | Telescope find_files<CR>", { desc = '[T]elescope Home' })
-			vim.keymap.set("n", "<leader>ts", "<Cmd>cd /mnt/user/unraid_scripts/ | Telescope find_files<CR>", { desc = '[T]elescope unraid_scripts' })
+			vim.keymap.set(
+        "n",
+        "<leader>ta",
+        "<Cmd>cd /mnt/user/appdata/ | Telescope find_files<CR>",
+        { desc = '[T]elescope appdata' })
+			vim.keymap.set(
+        "n",
+        "<leader>td",
+        "<Cmd>cd /boot/config/plugins/compose.manager/projects/ | Telescope find_files<CR>",
+        { desc = '[T]elescope docker compose' })
+			vim.keymap.set(
+        "n",
+        "<leader>tu",
+        "<Cmd>cd /boot/config/plugins/user.scripts/scripts/ | Telescope find_files find_command=rg,--files,-g,!name,-g,!description,-g,!typescript,-g,!Community<CR>",
+        { desc = '[T]elescope Userscripts' })
+			vim.keymap.set(
+        "n",
+        "<leader>th",
+        "<Cmd>cd /root/ | Telescope find_files<CR>",
+        { desc = '[T]elescope Home' })
+			vim.keymap.set(
+        "n",
+        "<leader>ts",
+        "<Cmd>cd /mnt/user/unraid_scripts/ | Telescope find_files<CR>",
+        { desc = '[T]elescope unraid_scripts' })
       vim.keymap.set("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find<CR>", { desc = '[S]earch [B]uffer' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
