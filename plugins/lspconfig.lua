@@ -7,27 +7,47 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      -- Configure LSP servers using the new vim.lsp.config interface
-      local servers = {
-        "lua_ls",
-        "bashls",
-        "dockerls",
-        "docker_compose_language_service",
-        "jsonls",
-        "pyright",
-        "yamlls",
-        "matlab_ls",
+      -- Configure all LSP servers with their specific settings
+      local server_configs = {
+        lua_ls = {
+          capabilities = capabilities,
+          settings = {
+            Lua = {
+              runtime = {
+                version = "LuaJIT",
+              },
+              diagnostics = {
+                globals = { "vim" },
+              },
+              workspace = {
+                library = {
+                  vim.env.VIMRUNTIME,
+                  vim.fn.stdpath("config"),
+                },
+                checkThirdParty = false,
+              },
+              telemetry = {
+                enable = false,
+              },
+            },
+          },
+        },
+        bashls = { capabilities = capabilities },
+        dockerls = { capabilities = capabilities },
+        docker_compose_language_service = { capabilities = capabilities },
+        jsonls = { capabilities = capabilities },
+        pyright = { capabilities = capabilities },
+        yamlls = { capabilities = capabilities },
+        matlab_ls = { capabilities = capabilities },
       }
 
-      -- Set up each server with the new API
-      for _, server in ipairs(servers) do
-        vim.lsp.config[server] = {
-          capabilities = capabilities,
-        }
+      -- Set up each server with its configuration
+      for server, config in pairs(server_configs) do
+        vim.lsp.config[server] = config
       end
 
       -- Enable all configured servers
-      vim.lsp.enable(servers)
+      vim.lsp.enable(vim.tbl_keys(server_configs))
 
       -- LspAttach autocmd replaces the old on_attach function
       vim.api.nvim_create_autocmd("LspAttach", {
