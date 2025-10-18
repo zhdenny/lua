@@ -29,10 +29,53 @@ vim.opt.termguicolors = true
 vim.g.have_nerd_font = true
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.opt.clipboard = "unnamedplus"
+
+-- Zach Denny - START EDIT
+-- Lines below are used to push neovim clipboard through ssh to host OS
+
+local function get_osc52_copy(register)
+  return function(lines)
+    local text = table.concat(lines, '\n')
+    local b64 = vim.base64.encode(text)
+    
+    -- Check if we're inside tmux
+    if vim.env.TMUX then
+      -- Use DCS wrapping for tmux
+      local osc52 = string.format('\x1bPtmux;\x1b\x1b]52;%s;%s\x07\x1b\\', register, b64)
+      io.stdout:write(osc52)
+    else
+      -- Use plain OSC 52 outside tmux
+      local osc52 = string.format('\x1b]52;%s;%s\x07', register, b64)
+      io.stdout:write(osc52)
+    end
+    io.stdout:flush()
+    return 0  -- Return 0 for success
+  end
+end
+
+local function get_osc52_paste(register)
+  return function()
+    -- OSC 52 paste not supported, return empty
+    return ''  -- Return empty string, not table
+  end
+end
+
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = get_osc52_copy('c'),
+    ['*'] = get_osc52_copy('c'),
+  },
+  paste = {
+    ['+'] = get_osc52_paste('c'),
+    ['*'] = get_osc52_paste('c'),
+  },
+}
+
+vim.opt.clipboard = 'unnamedplus'
+
+-- Zach Denny - END EDIT
+
 -- Save undo history
 vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
